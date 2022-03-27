@@ -3,6 +3,7 @@ import Nav from "./Nav";
 import Menu from "./Menu";
 import axios from "axios";
 import {Redirect} from 'react-router-dom';
+
 const Wrapper = (props: any) => {
     const [redirect, setRedirect] = useState(false);
 
@@ -16,7 +17,10 @@ const Wrapper = (props: any) => {
                     <Menu/>
 
                     <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                        {props.children}
+                        <div>
+                            {props.children}
+                        </div>
+
                     </main>
                 </div>
             </div>
@@ -24,4 +28,4 @@ const Wrapper = (props: any) => {
     );
 }
 
-export default  Wrapper;
+export default Wrapper;

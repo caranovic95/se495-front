@@ -4,11 +4,13 @@ import {Redirect} from 'react-router-dom';
 import Wrapper from "../../components/Wrapper";
 import {config} from "../../config";
 
-const ProductEdit = (props: any) => {
-    const [title, setTitle] = useState('');
+const KeywordProductEdit = (props: any) => {
+    const [product_name, setProductName] = useState('');
     const [price, setPrice] = useState('');
+    const [product_desc, setProductDesc] = useState('');
     const [brand, setBrand] = useState('');
     const [quantity, setQuantity] = useState('');
+    const [availability, setAvailability] = useState('');
     const [position, setPosition] = useState('');
     const [image, setImage] = useState('');
     const [redirect, setRedirect] = useState(false);
@@ -18,12 +20,14 @@ const ProductEdit = (props: any) => {
     useEffect(() => {
         (
             async () => {
-                const {data} = await axios.get(`product/${props.match.params.id}`, config);
-
-                setTitle(data.title);
+                const {data} = await axios.get(`/keyword_product/${props.match.params.id}`, config);
+                console.log("DATAAAAAAAAAAAAAAAAAAAAA:", data);
+                setProductName(data.product_name);
                 setPrice(data.price);
+                setProductDesc(data.product_desc);
                 setBrand(data.brand);
                 setQuantity(data.quantity);
+                setAvailability(data.availability);
                 setPosition(data.position);
                 setImage(data.image);
             }
@@ -34,10 +38,12 @@ const ProductEdit = (props: any) => {
         e.preventDefault();
 
         await axios.put(`product/${props.match.params.id}`, {
-            title,
+            product_name,
             price,
+            product_desc,
             brand,
             quantity,
+            availability,
             position,
             image
         }, config);
@@ -47,17 +53,17 @@ const ProductEdit = (props: any) => {
 
 
     if (redirect) {
-        return <Redirect to="/product"/>;
+        return <Redirect to="/keyword_products"/>;
     }
 
     return (
         <Wrapper>
             <form onSubmit={submit}>
                 <div className="mb-3">
-                    <label>Title</label>
+                    <label>Product name</label>
                     <input className="form-control"
-                           defaultValue={title}
-                           onChange={e => setTitle(e.target.value)}
+                           defaultValue={product_name}
+                           onChange={e => setProductName(e.target.value)}
                     />
                 </div>
                 <div className="mb-3">
@@ -65,6 +71,13 @@ const ProductEdit = (props: any) => {
                     <input className="form-control"
                            defaultValue={price}
                            onChange={e => setPrice(e.target.value)}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label>Product description</label>
+                    <input className="form-control"
+                           defaultValue={product_desc}
+                           onChange={e => setProductDesc(e.target.value)}
                     />
                 </div>
                 <div className="mb-3">
@@ -80,6 +93,15 @@ const ProductEdit = (props: any) => {
                         <input className="form-control"
                                defaultValue={quantity}
                                onChange={e => setQuantity(e.target.value)}
+                        />
+                    </div>
+                </div>
+                <div className="mb-3">
+                    <label>Availability</label>
+                    <div className="input-group">
+                        <input className="form-control"
+                               defaultValue={availability}
+                               onChange={e => setAvailability(e.target.value)}
                         />
                     </div>
                 </div>
@@ -108,4 +130,4 @@ const ProductEdit = (props: any) => {
     );
 };
 
-export default ProductEdit;
+export default KeywordProductEdit;
