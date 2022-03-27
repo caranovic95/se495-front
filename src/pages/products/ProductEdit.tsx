@@ -47,7 +47,7 @@ const ProductEdit = (props: any) => {
 
 
     if (redirect) {
-        return <Redirect to="/product"/>;
+        return <Redirect to="/products"/>;
     }
 
     return (

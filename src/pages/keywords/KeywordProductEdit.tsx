@@ -21,7 +21,6 @@ const KeywordProductEdit = (props: any) => {
         (
             async () => {
                 const {data} = await axios.get(`/keyword_product/${props.match.params.id}`, config);
-                console.log("DATAAAAAAAAAAAAAAAAAAAAA:", data);
                 setProductName(data.product_name);
                 setPrice(data.price);
                 setProductDesc(data.product_desc);
@@ -37,7 +36,7 @@ const KeywordProductEdit = (props: any) => {
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
 
-        await axios.put(`product/${props.match.params.id}`, {
+        await axios.put(`keyword_product/${props.match.params.id}`, {
             product_name,
             price,
             product_desc,

@@ -17,12 +17,17 @@ const PriceKeywordProductChart = (props: any) => {
                         columns: [
                             ['x'],
                             ['Price'],
-                            ['Position']
+                            ['Position'],
+                            ['Quantity']
 
                         ],
                         type: "bar",
+                        types: {
+                            Quantity: 'spline',
+                        },
                         axes: {
-                            Position: 'y2'
+                            Position: 'y2',
+                            Quantity: 'y2'
                         },
                     },
                     axis: {
@@ -60,6 +65,7 @@ const PriceKeywordProductChart = (props: any) => {
                         ['x', ...data.map((r: any) => r.date_col_formed)],
                         ['Price', ...data.map((r: any) => r.price)],
                         ['Position', ...data.map((r: any) => r.position)],
+                        ['Quantity', ...data.map((r: any) => r.quantity)],
                     ]
                 })
             }

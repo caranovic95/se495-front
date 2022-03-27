@@ -17,13 +17,18 @@ const PriceProductChart = (props: any) => {
                         columns: [
                             ['x'],
                             ['Price'],
-                            ['Position']
-
+                            ['Position'],
+                            ['Quantity']
                         ],
                         type: "bar",
-                        axes: {
-                            Position: 'y2'
+                        types: {
+                            Quantity: 'spline',
                         },
+                        axes: {
+                            Position: 'y2',
+                            Quantity: 'y2'
+                        },
+
                     },
                     axis: {
                         x: {
@@ -54,12 +59,16 @@ const PriceProductChart = (props: any) => {
                 setTimeout(function () {
                     chart.transform('line', 'Position');
                 }, 100);
+                setTimeout(function () {
+                    chart.transform('line', 'Quantity');
+                }, 100);
                 const {data} = await axios.get(`/products/${props.match.params.product_id}`, config);
                 chart.load({
                     columns: [
                         ['x', ...data.map((r: any) => r.date_col_formed)],
                         ['Price', ...data.map((r: any) => r.price)],
                         ['Position', ...data.map((r: any) => r.position)],
+                        ['Quantity', ...data.map((r: any) => r.quantity)],
                     ]
                 })
             }

@@ -34,6 +34,7 @@ const KeywordProducts = () => {
                 <table className="table table-striped table-sm">
                     <thead>
                     <tr>
+                        <th>Product id</th>
                         <th>Product name</th>
                         <th>Price</th>
                         <th>Product description</th>
@@ -50,6 +51,7 @@ const KeywordProducts = () => {
                         //console.log(p);
                         return (
                             <tr key={p.id}>
+                                <td>{p.product_id}</td>
                                 <td>{p.product_name}</td>
                                 <td>{p.price}</td>
                                 <td>{p.product_desc}</td>

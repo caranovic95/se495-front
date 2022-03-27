@@ -28,7 +28,7 @@ function App() {
                 <Route path={'/keywords_show'} exact component={Keywords}/>
                 <Route path={'/keyword'} exact component={KeywordCreate}/>
                 <Route path={'/keyword_products'} exact component={KeywordProducts}/>
-                <Route path={'//keyword_product/edit/:id'} exact component={KeywordProductEdit}/>
+                <Route path={'/keyword_product/edit/:id'} exact component={KeywordProductEdit}/>
                 <Route path={'/keyword_product/:product_id'} exact component={KeywordProductChart}/>
                 <Route path={'/keyword/edit/:id'} exact component={KeywordEdit}/>
                 <Route path={'/product/edit/:id'} exact component={ProductEdit}/>
