@@ -35,6 +35,7 @@ const KeywordProducts = () => {
                     <thead>
                     <tr>
                         <th>Product id</th>
+                        <th>Keyword</th>
                         <th>Product name</th>
                         <th>Price</th>
                         <th>Product description</th>
@@ -52,6 +53,7 @@ const KeywordProducts = () => {
                         return (
                             <tr key={p.id}>
                                 <td>{p.product_id}</td>
+                                <td>{p.keyword}</td>
                                 <td>{p.product_name}</td>
                                 <td>{p.price}</td>
                                 <td>{p.product_desc}</td>
